@@ -1,0 +1,13 @@
+#pragma once
+#include <iostream>
+#include <Eigen/Dense>
+#include <Eigen/Sparse>
+#include "Struct/zg_vector.h"
+#include <vector>
+#include <fstream>
+#include <string>
+#include "mesh/of_mesh.h"
+#include "matrix_csr.h"
+#include "base_data_structure.h"
+#include "base_field.h"
+#include "zg_field.h"
