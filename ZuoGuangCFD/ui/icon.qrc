@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/qss">
+        <file>qss/bf.css</file>
+        <file>qss/black.css</file>
+        <file>qss/blue.css</file>
+        <file>qss/darkblack.css</file>
+        <file>qss/darkblue.css</file>
+        <file>qss/darkgray.css</file>
+        <file>qss/flatblack.css</file>
+        <file>qss/flatwhite.css</file>
+        <file>qss/gray.css</file>
+        <file>qss/lightblack.css</file>
+        <file>qss/lightblue.css</file>
+        <file>qss/lightgray.css</file>
+        <file>qss/psblack.css</file>
+        <file>qss/silvery.css</file>
+        <file>qss/test.css</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file>image/btn_close.png</file>
+        <file>image/btn_ok.png</file>
+        <file>image/flat.png</file>
+        <file>image/flatlines.png</file>
+        <file>image/hiddenlines.png</file>
+        <file>image/Mesh.ico</file>
+        <file>image/msg_error.png</file>
+        <file>image/msg_info.png</file>
+        <file>image/msg_question.png</file>
+        <file>image/boundary.png</file>
+        <file>image/toolbar_hover.png</file>
+        <file>image/skin.png</file>
+        <file>image/points.png</file>
+    </qresource>
+</RCC>
