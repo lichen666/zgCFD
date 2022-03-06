@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "base_data_structure.h"
+#include "ZuoGuangCFD/struct/base_data_structure.h"
 
 TEST(Vector,euqal){
 	zgCFD::Vector<int> a(1, 1, 1);

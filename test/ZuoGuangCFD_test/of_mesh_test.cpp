@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "of_mesh.h"
+#include "ZuoGuangCFD/mesh/of_mesh.h"
 #include <fstream>
 
 class of_mesh_test :public testing::Test {

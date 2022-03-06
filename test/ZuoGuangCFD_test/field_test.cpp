@@ -1,7 +1,7 @@
 #include <fstream>
 #include "pch.h"
-#include "of_mesh.h"
-#include "zg_field.h"
+#include "ZuoGuangCFD/mesh/of_mesh.h"
+#include "ZuoGuangCFD/struct/zg_field.h"
 
 #define STE_FIELD(type,name) zgCFD::type##VolumeField name##(*test_mesh_, #name , struct_path_, "no", "yes");
 

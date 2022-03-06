@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "matrix_csr.h"
+#include "ZuoGuangCFD/struct/matrix_csr.h"
 
 TEST(matrix_csr, equal) {
 	zgCFD::CsrMatrix matrix_csr_test_a(4, 4);
@@ -139,9 +139,9 @@ TEST(matrix_csr, number_of_values) {
 
 	matrix_csr_test_c.InsertValue(3, 3, 1);
 
-	EXPECT_EQ(16, matrix_csr_test_a.number_of_values());
-	EXPECT_EQ(13, matrix_csr_test_b.number_of_values());
-	EXPECT_EQ(1, matrix_csr_test_c.number_of_values());
+	EXPECT_EQ(16, matrix_csr_test_a.GetNumberOfValues());
+	EXPECT_EQ(13, matrix_csr_test_b.GetNumberOfValues());
+	EXPECT_EQ(1, matrix_csr_test_c.GetNumberOfValues());
 }
 
 TEST(matrix_csr, multiply) {
