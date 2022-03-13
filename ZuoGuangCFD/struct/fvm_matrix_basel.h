@@ -4,9 +4,28 @@ FvmMatrix<Type>::FvmMatrix() :matrix_(0, 0)
 {
 }
 
+//template<class Type>
+//FvmMatrix<Type>::FvmMatrix(const FvmMatrix<Type> &rmatrix)
+//{
+////    this->matrix_.SetRow(rmatrix.number_of_rows_);
+////    this->matrix_.SetColumn(rmatrix.number_of_columns_);
+//
+//    this->matrix_ = rmatrix.matrix_;
+//    this->sorce_.assign(rmatrix.sorce_.begin(),rmatrix.sorce_.end());
+//}
+
 template<class Type>
 inline FvmMatrix<Type>::~FvmMatrix()
 {
+}
+
+template<class Type>
+FvmMatrix<Type> &FvmMatrix<Type>::operator=(const FvmMatrix<Type>&rmatrix)
+{
+    this->matrix_ = rmatrix.matrix_;
+    this->sorce_.assign(rmatrix.sorce_.begin(),rmatrix.sorce_.end());
+
+    return *this;
 }
 
 template<class Type>

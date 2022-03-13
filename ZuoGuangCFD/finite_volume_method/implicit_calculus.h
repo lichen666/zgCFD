@@ -9,14 +9,14 @@ namespace zgCFD
     {
 
         //扩散项离散
-        FvmScalarMatrix Diffusion(const ScalarVolumeField& gamma, ScalarVolumeField& variable);
-        FvmScalarMatrix Diffusion(const Scalar& gamma, ScalarVolumeField& variable);
-        FvmVectorMatrix Diffusion(const ScalarVolumeField& gamma, VectorVolumeField& variable);
-        FvmVectorMatrix Diffusion(const Scalar& gamma, VectorVolumeField& variable);
+        FvmScalarMatrix Diffusion(ScalarVolumeField& gamma, ScalarVolumeField& variable);
+        FvmScalarMatrix Diffusion(Scalar& gamma, ScalarVolumeField& variable);
+        FvmVectorMatrix Diffusion(ScalarVolumeField& gamma, VectorVolumeField& variable);
+        FvmVectorMatrix Diffusion(Scalar& gamma, VectorVolumeField& variable);
 
         ////对流项离散
-        FvmScalarMatrix Convection(const ScalarSurfaceField phi, ScalarVolumeField& variable);
-        FvmVectorMatrix Convection(const ScalarSurfaceField phi, VectorVolumeField& variable);
+        FvmScalarMatrix Convection(ScalarSurfaceField phi, ScalarVolumeField& variable);
+        FvmVectorMatrix Convection(ScalarSurfaceField phi, VectorVolumeField& variable);
 
         //时间项离散
         //向后EULER

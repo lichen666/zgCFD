@@ -253,7 +253,7 @@ namespace zgCFD {
 				{
 					if (matrix.column_indices_[r] < tmp_matrix.column_indices_[tmp_search])
 					{
-						tmp_matrix.values_.insert(values_.begin() + tmp_search, -matrix.values_[r]);
+						tmp_matrix.values_.insert(tmp_matrix.values_.begin() + tmp_search, -matrix.values_[r]);
 						tmp_matrix.column_indices_.insert(tmp_matrix.column_indices_.begin() + tmp_search, matrix.column_indices_[r]);
 						tmp_is_found = true;
 					}

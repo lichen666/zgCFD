@@ -9,9 +9,9 @@ namespace zgCFD
       public:
         //构造函数
 
-        TensorField(const Mesh& mesh, const std::string& field_name, const std::string& field_path,
+        TensorField(Mesh& mesh, const std::string& field_name, const std::string& field_path,
                     const std::string& is_write = "no", const std::string& is_read = "no");
-        TensorField(const Tensor<Scalar>& value, const Mesh& mesh, const std::string& field_name,
+        TensorField(const Tensor<Scalar>& value, Mesh& mesh, const std::string& field_name,
                     const std::string& field_path, const std::string& is_write = "no",
                     const std::string& is_read = "no");
         TensorField(const TensorField& field, const std::string& field_name, const std::string& field_path,
@@ -24,19 +24,19 @@ namespace zgCFD
 #include "tensor_fieldl.h"
 
     template <int vol_or_surface>
-    TensorField<vol_or_surface>::TensorField(const Mesh& mesh, const std::string& field_name,
-                                             const std::string& field_path, const std::string& is_write,
-                                             const std::string& is_read)
+    TensorField<vol_or_surface>::TensorField(Mesh& mesh, const std::string& field_name, const std::string& field_path,
+                                             const std::string& is_write, const std::string& is_read)
     {
         // vol_or_surface == 0表示体积场；vol_or_surface == 1表示面积场
         if (vol_or_surface == 0)
         {
-            this->value_.resize(mesh.elements_.size() + mesh.number_of_boundary_faces_,
-                                Tensor<Scalar>(0, 0, 0, 0, 0, 0, 0, 0, 0));
+            this->interior_value_.resize(mesh.number_of_elements_, GeneralTensor(0, 0, 0, 0, 0, 0, 0, 0, 0));
+            this->boundary_value_.resize(mesh.number_of_boundary_faces_, GeneralTensor(0, 0, 0, 0, 0, 0, 0, 0, 0));
         }
         else
         {
-            this->value_.resize(mesh.faces_.size(), Tensor<Scalar>(0, 0, 0, 0, 0, 0, 0, 0, 0));
+            this->interior_value_.resize(mesh.number_of_interior_faces_, GeneralTensor(0, 0, 0, 0, 0, 0, 0, 0, 0));
+            this->boundary_value_.resize(mesh.number_of_boundary_faces_, GeneralTensor(0, 0, 0, 0, 0, 0, 0, 0, 0));
         }
 
         this->mesh_ = &mesh;
@@ -65,18 +65,20 @@ namespace zgCFD
     }
 
     template <int vol_or_surface>
-    TensorField<vol_or_surface>::TensorField(const Tensor<Scalar>& value, const Mesh& mesh,
-                                             const std::string& field_name, const std::string& field_path,
-                                             const std::string& is_write, const std::string& is_read)
+    TensorField<vol_or_surface>::TensorField(const Tensor<Scalar>& value, Mesh& mesh, const std::string& field_name,
+                                             const std::string& field_path, const std::string& is_write,
+                                             const std::string& is_read)
     {
         // vol_or_surface == 0表示体积场；vol_or_surface == 1表示面积场
         if (vol_or_surface == 0)
         {
-            this->value_.resize(mesh.elements_.size() + mesh.number_of_boundary_faces_, value);
+            this->interior_value_.resize(mesh.number_of_elements_, value);
+            this->boundary_value_.resize(mesh.number_of_boundary_faces_, value);
         }
         else
         {
-            this->value_.resize(mesh.faces_.size(), value);
+            this->interior_value_.resize(mesh.number_of_interior_faces_, value);
+            this->boundary_value_.resize(mesh.number_of_boundary_faces_, value);
         }
 
         this->mesh_ = &mesh;
@@ -109,7 +111,8 @@ namespace zgCFD
                                              const std::string& field_path, const std::string& is_write,
                                              const std::string& is_read)
     {
-        this->value_ = field.value_;
+        this->interior_value_ = field.interior_value_;
+        this->boundary_value_ = field.boundary_value_;
 
         this->mesh_ = field.mesh_;
 
@@ -173,21 +176,21 @@ namespace zgCFD
                 tmp_field_file >> tmp_num;
                 tmp_field_file >> tmp_char;  //"("
 
-                this->value_.resize(tmp_num);
+                this->interior_value_.resize(tmp_num);
 
                 for (int i = 0; i < tmp_num; i++)
                 {
                     tmp_field_file >> tmp_char;
 
-                    tmp_field_file >> this->value_[i].xx();
-                    tmp_field_file >> this->value_[i].xy();
-                    tmp_field_file >> this->value_[i].xz();
-                    tmp_field_file >> this->value_[i].yx();
-                    tmp_field_file >> this->value_[i].yy();
-                    tmp_field_file >> this->value_[i].yz();
-                    tmp_field_file >> this->value_[i].zx();
-                    tmp_field_file >> this->value_[i].zy();
-                    tmp_field_file >> this->value_[i].zz();
+                    tmp_field_file >> this->interior_value_[i].xx();
+                    tmp_field_file >> this->interior_value_[i].xy();
+                    tmp_field_file >> this->interior_value_[i].xz();
+                    tmp_field_file >> this->interior_value_[i].yx();
+                    tmp_field_file >> this->interior_value_[i].yy();
+                    tmp_field_file >> this->interior_value_[i].yz();
+                    tmp_field_file >> this->interior_value_[i].zx();
+                    tmp_field_file >> this->interior_value_[i].zy();
+                    tmp_field_file >> this->interior_value_[i].zz();
 
                     tmp_field_file >> tmp_char;
                 }
@@ -218,9 +221,9 @@ namespace zgCFD
 
             tmp_field_file >> tmp_string;
 
-            for (int i = 0; i < this->value_.size(); i++)
+            for (int i = 0; i < this->interior_value_.size(); i++)
             {
-                this->value_[i] = tmp_tensor;
+                this->interior_value_[i] = tmp_tensor;
             }
         }
         else

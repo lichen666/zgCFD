@@ -17,15 +17,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ../../../ZuoGuangCFD/ZuoGuangCFD.cpp \
+    ../../../ZuoGuangCFD/algorithm/piso.cpp \
     ../../../ZuoGuangCFD/finite_volume_method/explicit_calculus.cpp \
     ../../../ZuoGuangCFD/finite_volume_method/implicit_calculus.cpp \
     ../../../ZuoGuangCFD/finite_volume_method/implicit_convection.cpp \
+    ../../../ZuoGuangCFD/finite_volume_method/implicit_diffusion.cpp \
     ../../../ZuoGuangCFD/mesh/boundary.cpp \
     ../../../ZuoGuangCFD/mesh/element.cpp \
     ../../../ZuoGuangCFD/mesh/face.cpp \
     ../../../ZuoGuangCFD/mesh/mesh.cpp \
     ../../../ZuoGuangCFD/mesh/of_mesh.cpp \
     ../../../ZuoGuangCFD/mesh/point.cpp \
+    ../../../ZuoGuangCFD/output/output_of.cpp \
+    ../../../ZuoGuangCFD/output/output_vtu.cpp \
+    ../../../ZuoGuangCFD/solver/solver.cpp \
     ../../../ZuoGuangCFD/struct/base_point.cpp \
     ../../../ZuoGuangCFD/struct/matrix_coo.cpp \
     ../../../ZuoGuangCFD/struct/matrix_csr.cpp \
@@ -35,20 +40,26 @@ SOURCES += \
 
 HEADERS += \
     ../../../ZuoGuangCFD/ZuoGuangCFD.h \
+    ../../../ZuoGuangCFD/algorithm/piso.h \
     ../../../ZuoGuangCFD/finite_volume_method/explicit_calculus.h \
     ../../../ZuoGuangCFD/finite_volume_method/implicit_calculus.h \
     ../../../ZuoGuangCFD/finite_volume_method/implicit_convection.h \
+    ../../../ZuoGuangCFD/finite_volume_method/implicit_diffusion.h \
     ../../../ZuoGuangCFD/mesh/boundary.h \
     ../../../ZuoGuangCFD/mesh/element.h \
     ../../../ZuoGuangCFD/mesh/face.h \
     ../../../ZuoGuangCFD/mesh/mesh.h \
     ../../../ZuoGuangCFD/mesh/of_mesh.h \
     ../../../ZuoGuangCFD/mesh/point.h \
+    ../../../ZuoGuangCFD/output/output_of.h \
+    ../../../ZuoGuangCFD/output/output_vtu.h \
+    ../../../ZuoGuangCFD/solver/solver.h \
     ../../../ZuoGuangCFD/struct/base_data_structure.h \
     ../../../ZuoGuangCFD/struct/base_field.h \
     ../../../ZuoGuangCFD/struct/base_field_exception.h \
     ../../../ZuoGuangCFD/struct/base_fieldl.h \
     ../../../ZuoGuangCFD/struct/base_point.h \
+    ../../../ZuoGuangCFD/struct/enums.h \
     ../../../ZuoGuangCFD/struct/fvm_matrix.h \
     ../../../ZuoGuangCFD/struct/fvm_matrixl.h \
     ../../../ZuoGuangCFD/struct/matrix_coo.h \

@@ -11,7 +11,8 @@ namespace zgCFD {
         NOSLIP,
         INLET,
         OUTLET,
-        EMPTY
+        EMPTY,
+        CALCULATED
     };
 
     enum class TheInterpolationScheme
@@ -26,4 +27,5 @@ namespace zgCFD {
         GAUSS,
         NODAL
     };
+
 }

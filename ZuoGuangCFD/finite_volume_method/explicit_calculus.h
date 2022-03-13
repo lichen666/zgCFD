@@ -8,18 +8,21 @@ namespace zgCFD
     {
         //插值
 
-        ScalarSurfaceField Interpolate(const ScalarVolumeField& svfield, TheInterpolationScheme scheme);
-        VectorSurfaceField Interpolate(const VectorVolumeField& vvfield, TheInterpolationScheme scheme);
+        ScalarSurfaceField Interpolate(ScalarVolumeField& svfield, TheInterpolationScheme scheme);
+        VectorSurfaceField Interpolate(VectorVolumeField& vvfield, TheInterpolationScheme scheme);
 
-        VectorSurfaceField InterpolateGradient(const VectorVolumeField& grad_field, const ScalarVolumeField& svfield,
+        VectorSurfaceField InterpolateGradient(VectorVolumeField& grad_field,ScalarVolumeField& svfield,
                                                TheInterpolationScheme scheme);
-        TensorSurfaceField InterpolateGradient(const TensorVolumeField& grad_field, const VectorVolumeField& vvfield,
+        TensorSurfaceField InterpolateGradient(TensorVolumeField& grad_field,VectorVolumeField& vvfield,
             TheInterpolationScheme scheme);
         //梯度
         //标量场梯度
-        VectorVolumeField ComputeGradient(const ScalarVolumeField& svfield, ComputeGradientScheme scheme);
+        VectorVolumeField ComputeGradient(ScalarVolumeField& svfield, ComputeGradientScheme scheme);
         //矢量场梯度
-        TensorVolumeField ComputeGradient(const VectorVolumeField& vvfield, ComputeGradientScheme scheme);
+        TensorVolumeField ComputeGradient(VectorVolumeField& vvfield, ComputeGradientScheme scheme);
+
+        //通量
+        ScalarVolumeField Convection(ScalarSurfaceField &phi);
 
     }  // namespace exp
 }  // namespace zgCFD

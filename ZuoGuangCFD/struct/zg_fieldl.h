@@ -9,7 +9,7 @@ using TensorSurfaceField = TensorField<1>;
 template<int vol_or_surface>																											\
 return_type##<vol_or_surface> operator the_operator##(const type1##<vol_or_surface>& field1, const type2##<vol_or_surface>& field2) {	\
 																																		\
-	if (field1.value_.size() != field2.value_.size())																					\
+	if (field1.interior_value_.size() != field2.interior_value_.size())																					\
 	{																																	\
 		std::cerr << "请检查两个场的大小是否一致！" << std::endl;																			\
 		exit(-1);																														\
@@ -17,15 +17,19 @@ return_type##<vol_or_surface> operator the_operator##(const type1##<vol_or_surfa
 																																		\
 	return_type##<vol_or_surface> tmp_field(*field1.mesh_,"tmp_name","tmp_path");																		\
 																																		\
-	tmp_field.value_.resize(field1.value_.size());																						\
+	tmp_field.interior_value_.resize(field1.interior_value_.size());																						\
 																																		\
-	for (int i = 0; i < field1.value_.size(); i++)																						\
+	for (int i = 0; i < field1.interior_value_.size(); i++)																						\
 	{																																	\
-		tmp_field.value_[i] = field1.value_[i] the_operator field2.value_[i];															\
+		tmp_field.interior_value_[i] = field1.interior_value_[i] the_operator field2.interior_value_[i];															\
+	}																																	\
+	for (int i = 0; i < field1.boundary_value_.size(); i++)																						\
+	{																																	\
+		tmp_field.boundary_value_[i] = field1.boundary_value_[i] the_operator field2.boundary_value_[i];								\
 	}																																	\
 																																		\
 	return tmp_field;																													\
-}
+}																																		\
 
 FIELD_OPERATOR_WITH_FIELD(TensorField, TensorField, TensorField, +);
 FIELD_OPERATOR_WITH_FIELD(TensorField, TensorField, TensorField, -);
@@ -60,11 +64,16 @@ return_type##<vol_or_surface> operator the_operator##(const type1##& st, const t
 																													\
 	return_type##<vol_or_surface> tmp_field(*field.mesh_,"tmp_name","tmp_path");													\
 																													\
-	tmp_field.value_.resize(field.value_.size());																	\
+	tmp_field.interior_value_.resize(field.interior_value_.size());																	\
 																													\
-	for (int i = 0; i < field.value_.size(); i++)																	\
+	for (int i = 0; i < field.interior_value_.size(); i++)																	\
 	{																												\
-		tmp_field.value_[i] = st the_operator field.value_[i];														\
+		tmp_field.interior_value_[i] = st the_operator field.interior_value_[i];														\
+	}																												\
+																													\
+	for (int i = 0; i < field.boundary_value_.size(); i++)																	\
+	{																												\
+		tmp_field.boundary_value_[i] = st the_operator field.boundary_value_[i];														\
 	}																												\
 																													\
 	return tmp_field;																								\
@@ -103,11 +112,16 @@ return_type##<vol_or_surface> operator the_operator##(const type1##<vol_or_surfa
 																													\
 	return_type##<vol_or_surface> tmp_field(*field.mesh_,"tmp_name","tmp_path");													\
 																													\
-	tmp_field.value_.resize(field.value_.size());																	\
+	tmp_field.interior_value_.resize(field.interior_value_.size());																	\
 																													\
-	for (int i = 0; i < field.value_.size(); i++)																	\
+	for (int i = 0; i < field.interior_value_.size(); i++)																	\
 	{																												\
-		tmp_field.value_[i] = field.value_[i] the_operator st;														\
+		tmp_field.interior_value_[i] = field.interior_value_[i] the_operator st;														\
+	}																												\
+																													\
+	for (int i = 0; i < field.boundary_value_.size(); i++)																	\
+	{																												\
+		tmp_field.boundary_value_[i] = field.boundary_value_[i] the_operator st;														\
 	}																												\
 																													\
 	return tmp_field;																								\

@@ -17,9 +17,9 @@ bool MeshViewerWidget::InitializeShader(float ratio)
 
     for (int i = 0; i < mesh_->number_of_points_; ++i)
     {
-        vertices.push_back(mesh_->points_[i].x_ / ratio);
-        vertices.push_back(mesh_->points_[i].y_ / ratio);
-        vertices.push_back(mesh_->points_[i].z_ / ratio);
+        vertices.push_back(mesh_->points_[i].x_ / (ratio));
+        vertices.push_back(mesh_->points_[i].y_ / (ratio));
+        vertices.push_back(mesh_->points_[i].z_ / (ratio));
     }
 
     qgl_functions->glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
@@ -52,7 +52,7 @@ bool MeshViewerWidget::ScreenShot()
     QString filename = strMeshPath + "/" + QDateTime::currentDateTime().toString("yyyyMMddHHmmsszzz") + QString(".png");
     QImage image = grabFramebuffer();
     image.save(filename);
-    std::cout << "Save screen shot to " << filename.toStdString() << std::endl;
+    std::cout << "保存截图到 " << filename.toStdString() << std::endl;
     return true;
 }
 
@@ -263,11 +263,21 @@ bool MeshViewerWidget::GetMesh(zgCFD::Mesh& _mesh)
             ptMax.z_ = ptMax.z_ < mesh_->points_[i].z_ ? mesh_->points_[i].z_ : ptMax.z_;
         }
 
-        SetScenePosition((ptMin + ptMax) * 0.5, (ptMin - ptMax).Magnitude() * 0.5);
+        double radio = std::max(std::max((ptMax - ptMin).x(), (ptMax - ptMin).y()), (ptMax - ptMin).z());
 
-        InitializeShader((ptMin - ptMax).Magnitude());
-        return true;
+        ptMin.x_ = ptMin.x_ / radio;
+        ptMax.x_ = ptMax.x_ / radio;
+        ptMin.y_ = ptMin.y_ / radio;
+        ptMax.y_ = ptMax.y_ / radio;
+        ptMin.z_ = ptMin.z_ / radio;
+        ptMax.z_ = ptMax.z_ / radio;
+
+        SetScenePosition((ptMin + ptMax) * 0.5, (ptMax - ptMin).Magnitude() * 0.5);
+
+        InitializeShader(radio);
+
         update();
+        return true;
     }
     return false;
 }

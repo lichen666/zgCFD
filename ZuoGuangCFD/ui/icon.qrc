@@ -22,7 +22,6 @@
         <file>image/flat.png</file>
         <file>image/flatlines.png</file>
         <file>image/hiddenlines.png</file>
-        <file>image/Mesh.ico</file>
         <file>image/msg_error.png</file>
         <file>image/msg_info.png</file>
         <file>image/msg_question.png</file>
@@ -30,5 +29,9 @@
         <file>image/toolbar_hover.png</file>
         <file>image/skin.png</file>
         <file>image/points.png</file>
+        <file>image/counter.png</file>
+        <file>image/post.png</file>
+        <file>image/mesh.png</file>
+        <file>image/skin2.png</file>
     </qresource>
 </RCC>

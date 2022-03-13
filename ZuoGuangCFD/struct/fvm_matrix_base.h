@@ -4,6 +4,7 @@
 #include "ZuoGuangCFD/struct/matrix_csr.h"
 #include "ZuoGuangCFD/struct/base_data_structure.h"
 #include "ZuoGuangCFD/struct/zg_field.h"
+#include "3rdparty/eigen/Eigen/Eigen"
 
 namespace zgCFD
 {
@@ -12,12 +13,14 @@ namespace zgCFD
     {
       public:
         FvmMatrix();
+        //FvmMatrix(const FvmMatrix& rmatrix);
         ~FvmMatrix();
 
         void SetVarible(BaseField<Type, 0> * var);
 
         FvmMatrix operator+(const FvmMatrix& rmatrix);
         FvmMatrix operator-(const FvmMatrix& rmatrix);
+        FvmMatrix& operator=(const FvmMatrix& rmatrix);
 
         //ÏµÊý¾ØÕóA
         CsrMatrix matrix_;
@@ -27,8 +30,9 @@ namespace zgCFD
         //³¡
         BaseField<Type, 0>* field_;
 
-      private:
+    private:
     };
+
 
 #include "ZuoGuangCFD/struct/fvm_matrix_basel.h"
 

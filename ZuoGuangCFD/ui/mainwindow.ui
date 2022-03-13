@@ -14,22 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_3">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>6</number>
-    </property>
-    <property name="spacing">
-     <number>6</number>
-    </property>
+   <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0" colspan="2">
      <widget class="QWidget" name="top_btmwidget" native="true">
       <property name="minimumSize">
@@ -39,7 +24,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">QWidget{background:transparent;background-image:url(:/icon/image/skin.png);}
+       <string notr="true">QWidget{background:transparent;background-image:url(:/icon/image/skin2.png);}
 QToolButton:on{border-image:url(:/icon/image/toolbar_hover.png)}
 QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
 </string>
@@ -61,12 +46,12 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
        </property>
        <property name="icon">
         <iconset resource="icon.qrc">
-         <normaloff>:/icon/image/Mesh.ico</normaloff>:/icon/image/Mesh.ico</iconset>
+         <normaloff>:/icon/image/mesh.png</normaloff>:/icon/image/mesh.png</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>60</width>
-         <height>60</height>
+         <width>50</width>
+         <height>50</height>
         </size>
        </property>
        <property name="toolButtonStyle">
@@ -74,6 +59,9 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
        </property>
       </widget>
       <widget class="QToolButton" name="toolButtonBoundary">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -102,7 +90,10 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
         <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
-      <widget class="QToolButton" name="toolButton_4">
+      <widget class="QToolButton" name="toolButtonSolve">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>270</x>
@@ -115,23 +106,26 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>电脑清理</string>
+        <string>求解</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>:/img/toolWidget/qingLi.png</normaloff>:/img/toolWidget/qingLi.png</iconset>
+        <iconset resource="icon.qrc">
+         <normaloff>:/icon/image/counter.png</normaloff>:/icon/image/counter.png</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>90</width>
-         <height>90</height>
+         <width>50</width>
+         <height>50</height>
         </size>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
-      <widget class="QToolButton" name="toolButton_5">
+      <widget class="QToolButton" name="toolButtonPostProcessor">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>390</x>
@@ -144,80 +138,38 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>系统修复</string>
+        <string>  后处理</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>:/img/toolWidget/xiTong.png</normaloff>:/img/toolWidget/xiTong.png</iconset>
+        <iconset resource="icon.qrc">
+         <normaloff>:/icon/image/post.png</normaloff>:/icon/image/post.png</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>90</width>
-         <height>90</height>
+         <width>50</width>
+         <height>50</height>
         </size>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
-      <widget class="QToolButton" name="toolButton_6">
-       <property name="geometry">
-        <rect>
-         <x>510</x>
-         <y>0</y>
-         <width>100</width>
-         <height>99</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>优化加速</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/img/toolWidget/jiaSu.png</normaloff>:/img/toolWidget/jiaSu.png</iconset>
-       </property>
-       <property name="iconSize">
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="MeshViewerWidget" name="openGLWidget">
+       <property name="minimumSize">
         <size>
-         <width>90</width>
-         <height>90</height>
+         <width>900</width>
+         <height>300</height>
         </size>
        </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
-       </property>
       </widget>
-      <widget class="QToolButton" name="toolButton_7">
-       <property name="geometry">
-        <rect>
-         <x>610</x>
-         <y>0</y>
-         <width>100</width>
-         <height>99</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>漏洞修复</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/img/toolWidget/louDong.png</normaloff>:/img/toolWidget/louDong.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>90</width>
-         <height>90</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
-       </property>
-      </widget>
+      <widget class="QPlainTextEdit" name="plainTextEdit"/>
      </widget>
     </item>
     <item row="1" column="0">
@@ -238,7 +190,7 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -421,101 +373,325 @@ QToolButton:hover{border-image:url(:/icon/image/toolbar_hover.png)}
        <attribute name="title">
         <string/>
        </attribute>
-       <widget class="QListView" name="listView">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>256</width>
-          <height>192</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>230</y>
-          <width>191</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>230</y>
-          <width>54</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>速度边界</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>300</y>
-          <width>54</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string> 压力边界</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox_2">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>300</y>
-          <width>191</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>260</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>330</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>  压力边界</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>30</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QComboBox" name="comboBoxP"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditP"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string> 速度边界</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBoxV"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string> X速度</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditVX"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string> Y速度</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditVY"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string> Z速度</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditVZ"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <widget class="QListWidget" name="listWidgetBoundary"/>
+        </item>
+        <item row="3" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="pushButton_boundary_info">
+            <property name="text">
+             <string> 边界信息</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>设置</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string/>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="3" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>时间步长</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditDeltat"/>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QLabel" name="label_19">
+              <property name="text">
+               <string> 总时长 </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditTotleTime"/>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string>输出间隔</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditOutTime"/>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>PISO循环</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditPISO">
+              <property name="text">
+               <string>2</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QLabel" name="label_23">
+              <property name="text">
+               <string>起始时间</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditStartTime">
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QPushButton" name="pushButtonInitial">
+            <property name="text">
+             <string>初始化</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonRun">
+            <property name="text">
+             <string>计算</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string> X速度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditVXIni">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string> Y速度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditVYIni">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string> Z速度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditVZIni">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string> 粘度nu </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditNu">
+              <property name="text">
+               <string>0.01</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>初始压力</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditPIni">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string/>
+       </attribute>
       </widget>
      </widget>
-    </item>
-    <item row="1" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="MeshViewerWidget" name="openGLWidget">
-        <property name="minimumSize">
-         <size>
-          <width>900</width>
-          <height>300</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPlainTextEdit" name="plainTextEdit"/>
-      </item>
-     </layout>
     </item>
    </layout>
   </widget>

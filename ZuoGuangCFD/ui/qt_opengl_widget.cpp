@@ -130,29 +130,29 @@ void QtOpenGLWidget::SetMaterial(const QtOpenGLWidget::MaterialType& mattype) co
 
 void QtOpenGLWidget::SetDefaultLight() const
 {
-    // Lighting
-    glLoadIdentity();
-    GLfloat pos1[] = {10.0f, 10.0f, -10.0f, 0.0f};
-    GLfloat pos2[] = {-10.0f, 10.0f, -10.0f, 0.0f};
-    GLfloat pos3[] = {0.0f, 0.0f, 10.0f, 0.0f};
-    GLfloat col1[] = {0.8f, 0.8f, 0.8f, 1.0f};
-    GLfloat col2[] = {0.8f, 0.8f, 0.8f, 1.0f};
-    GLfloat col3[] = {0.8f, 0.8f, 0.8f, 1.0f};
+    // 设置灯光
+    //    glLoadIdentity();
+    //    GLfloat pos1[] = {10.0f, 10.0f, -10.0f, 0.0f};
+    //    GLfloat pos2[] = {-10.0f, 10.0f, -10.0f, 0.0f};
+    //    GLfloat pos3[] = {0.0f, 0.0f, 10.0f, 0.0f};
+    //    GLfloat col1[] = {0.66f, 0.66f, 0.66f, 1.0f};
+    //    GLfloat col2[] = {0.66f, 0.66f, 0.66f, 1.0f};
+    //    GLfloat col3[] = {0.66f, 0.66f, 0.66f, 1.0f};
 
-    qgl_functions->glEnable(GL_LIGHT0);
-    glLightfv(GL_LIGHT0, GL_POSITION, pos1);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, col1);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, col1);
+    //    qgl_functions->glEnable(GL_LIGHT0);
+    //    glLightfv(GL_LIGHT0, GL_POSITION, pos1);
+    //    glLightfv(GL_LIGHT0, GL_DIFFUSE, col1);
+    //    glLightfv(GL_LIGHT0, GL_SPECULAR, col1);
 
-    qgl_functions->glEnable(GL_LIGHT1);
-    glLightfv(GL_LIGHT1, GL_POSITION, pos2);
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, col2);
-    glLightfv(GL_LIGHT1, GL_SPECULAR, col2);
+    //    qgl_functions->glEnable(GL_LIGHT1);
+    //    glLightfv(GL_LIGHT1, GL_POSITION, pos2);
+    //    glLightfv(GL_LIGHT1, GL_DIFFUSE, col2);
+    //    glLightfv(GL_LIGHT1, GL_SPECULAR, col2);
 
-    qgl_functions->glEnable(GL_LIGHT2);
-    glLightfv(GL_LIGHT2, GL_POSITION, pos3);
-    glLightfv(GL_LIGHT2, GL_DIFFUSE, col3);
-    glLightfv(GL_LIGHT2, GL_SPECULAR, col3);
+    //    qgl_functions->glEnable(GL_LIGHT2);
+    //    glLightfv(GL_LIGHT2, GL_POSITION, pos3);
+    //    glLightfv(GL_LIGHT2, GL_DIFFUSE, col3);
+    //    glLightfv(GL_LIGHT2, GL_SPECULAR, col3);
 }
 
 void QtOpenGLWidget::initializeGL()
@@ -160,7 +160,7 @@ void QtOpenGLWidget::initializeGL()
     qgl_functions = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_3_Core>();
     qgl_functions->initializeOpenGLFunctions();
 
-    // OpenGL state
+    // 设置背景
     qgl_functions->glClearColor(1.0, 1.0, 1.0, 1.0);
     qgl_functions->glClearDepth(1.0);
 
@@ -174,19 +174,18 @@ void QtOpenGLWidget::initializeGL()
     qgl_functions->glEnable(GL_POINT_SMOOTH);
     qgl_functions->glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 
-    // Material
+    // 材料
     SetMaterial();
 
-    // Lighting
+    // 灯光
     glLoadIdentity();
     SetDefaultLight();
 
-    // scene pos and size
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     // glGetDoublev(GL_MODELVIEW_MATRIX, modelview_matrix_);
 
-    // for initialize all the viewports
+    // 初始化
     qgl_functions->glGetDoublev(GL_MODELVIEW_MATRIX, &modelview_matrix[0]);
     CopyModelViewMatrix();
 
@@ -267,10 +266,9 @@ void QtOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
         }
     }
 
-    // remember this point
     lastpoint2 = newPoint2D;
     last_point_ok = MapToSphere(lastpoint2, lastpoint3);
-    // trigger redraw
+
     update();
 }
 
@@ -349,7 +347,7 @@ void QtOpenGLWidget::Rotation(const QPoint& p)
         {
             axis.Normalize();
         }
-        // find the amount of rotation
+        // 旋转相关量
         zgCFD::GeneralVector d = lastpoint3 - newPoint3D;
         double t = 0.5 * d.Magnitude() / track_ball_radius;
         if (t < -1.0)
@@ -414,7 +412,7 @@ void QtOpenGLWidget::UpdateProjectionMatrix()
                   0.01 * radius * (sqrt(2.0) - 1) * width() / height(), -0.01 * radius * (sqrt(2.0) - 1),
                   0.01 * radius * (sqrt(2.0) - 1), 0.01 * radius, 100.0 * radius);
     }
-    else if (ORTHOGRAPHIC == projection_mode)  // not work for
+    else if (ORTHOGRAPHIC == projection_mode)
     {
         glOrtho(window_left, window_right, window_bottom, windo_wtop, -1, 1);
     }

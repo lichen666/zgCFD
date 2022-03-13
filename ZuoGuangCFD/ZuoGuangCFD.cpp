@@ -178,8 +178,10 @@
 //
 int main(int argc, char* argv[])
 {
-    //    QTextCodec* codec = QTextCodec::codecForName("UTF-8");  //或者"GBK",不分大小写
-    //    QTextCodec::setCodecForLocale(codec);
+    QTextCodec* codec = QTextCodec::codecForName("UTF-8");  //或者"GBK",不分大小写
+    QTextCodec::setCodecForLocale(codec);
+    //    QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
+
     QApplication a(argc, argv);
 
     QString qss;

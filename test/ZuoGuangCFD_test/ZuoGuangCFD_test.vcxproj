@@ -79,6 +79,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="implicit_calculus_test.cpp" />
+    <ClCompile Include="solver_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\project_files\ZuoGuangCFD\ZuoGuangCFD.vcxproj">

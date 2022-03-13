@@ -11,7 +11,9 @@ namespace zgCFD
         case_directory_ = case_directory;
 
         if (ReadPointsFile() && ReadFacesFile() && ReadOwnerFile() && ReadNeighbourFile() && ReadBoundaryFile())
+        {
             success = true;
+        }
 
         number_of_interior_faces_ = number_of_neighbours_;
 
